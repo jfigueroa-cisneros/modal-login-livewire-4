@@ -2,6 +2,8 @@
 
 use Livewire\Component;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ValidateEmail;
 
 new class extends Component {
     public $name;
@@ -22,11 +24,13 @@ new class extends Component {
     {
         $this->validate();
 
-        User::create([
+        $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
             'password' => bcrypt($this->password),
         ]);
+
+        Mail::to($user->email)->send(new ValidateEmail($user));
 
         $this->reset(['name', 'email', 'password', 'password_confirmation']);
 
