@@ -1,6 +1,7 @@
 <div class="toast-container position-fixed bottom-0 end-0 p-3">
     <div id="messageToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-body">
+        <div class="toast-body d-flex justify-content-between align-items-center">
+            <span id="toastMessage"></span>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
@@ -8,8 +9,8 @@
 <script>
     function showToast(type, message) {
         const messageToast = document.getElementById('messageToast')
-        const toastBody = messageToast.querySelector('.toast-body')
-        toastBody.innerHTML = message + toastBody.innerHTML
+        const toastMessage = messageToast.querySelector('#toastMessage')
+        toastMessage.textContent = message
         messageToast.classList.remove('bg-success', 'bg-danger', 'bg-warning', 'bg-info', 'text-white')
         messageToast.classList.add(`bg-${type}`, 'text-white')
 
