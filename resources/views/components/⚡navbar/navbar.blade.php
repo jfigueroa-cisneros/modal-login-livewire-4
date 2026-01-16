@@ -8,7 +8,8 @@
             </a>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <button wire:click="login" type="button" class="btn btn-outline-success">Login</button>
+                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                        data-bs-target="#loginModal">Login</button>
                 </li>
                 <li class="nav-item ms-1">
                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
@@ -19,4 +20,5 @@
     </nav>
 
     <livewire:register />
+    <livewire:login />
 </div>

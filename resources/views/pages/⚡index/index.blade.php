@@ -1,4 +1,12 @@
 <div>
+    <div class="mt-5 pt-4 text-center">
+        @auth
+            <h1 class="mt-5">Welcome, {{ auth()->user()->name }}!</h1>
+        @else
+            <h1 class="mt-5">Welcome to Modal Login Livewire 4</h1>
+            <p class="lead">Please login or register to continue.</p>
+        @endauth
+    </div>
     <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
         <div class="carousel-inner">
             <div class="carousel-item active">
