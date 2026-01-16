@@ -24,7 +24,7 @@ new class extends Component {
 
             session()->regenerate();
 
-            session()->flash('message', 'Login successful!');
+            session()->flash('success', 'Login successful!');
 
             $this->redirect('/');
         } else {
