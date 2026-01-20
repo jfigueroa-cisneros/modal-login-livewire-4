@@ -26,9 +26,13 @@
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" form="loginForm">Login</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-outline-success" data-bs-target="#forgotPasswordModal"
+                    data-bs-toggle="modal">Forgot Password?</button>
+                <div>
+                    <button type="submit" class="btn btn-primary" form="loginForm">Login</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
