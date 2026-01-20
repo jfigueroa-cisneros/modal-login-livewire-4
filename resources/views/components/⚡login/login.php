@@ -11,7 +11,7 @@ new class extends Component {
     {
         return [
             'email' => 'required|string|email|max:255|exists:users,email',
-            'password' => 'required|string|min:8',
+            'password' => 'required|string',
         ];
     }
 
@@ -19,16 +19,25 @@ new class extends Component {
     {
         $this->validate();
 
-        if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
-            $this->reset(['email', 'password']);
-
-            session()->regenerate();
-
-            session()->flash('success', 'Login successful!');
-
-            $this->redirect('/');
-        } else {
+        if (!Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
             $this->addError('password', 'The provided credentials do not match our records.');
+            return;
         }
+
+        $user = Auth::user();
+
+        if ($user->email_verified_at === null) {
+            Auth::logout();
+            $this->addError('email', 'Please verify your email before logging in.');
+            return;
+        }
+
+        $this->reset(['email', 'password']);
+
+        session()->regenerate();
+
+        session()->flash('success', 'Login successful!');
+
+        $this->redirect('/');
     }
 };
