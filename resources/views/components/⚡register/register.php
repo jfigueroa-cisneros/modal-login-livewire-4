@@ -34,7 +34,7 @@ new class extends Component {
 
         $this->reset(['name', 'email', 'password', 'password_confirmation']);
 
-        session()->flash('message', 'Registration successful! You can now log in.');
+        session()->flash('success', 'Registration successful! Please verify your email.');
 
         $this->redirect('/');
     }
