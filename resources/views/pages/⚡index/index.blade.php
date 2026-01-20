@@ -7,8 +7,64 @@
             <p class="lead">Please login or register to continue.</p>
         @endauth
     </div>
-    <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
-        <div class="carousel-inner">
+    <div class="row">
+        <div class="card col-md-3">
+            <div class="card-body">
+                <h5 class="card-title">Cars Available</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">Available cars in store</h6>
+                @island(lazy: true)
+                @placeholder
+                <p class="card-text placeholder-glow">
+                    <span class="placeholder col-7"></span>
+                    <span class="placeholder col-4"></span>
+                    <span class="placeholder col-4"></span>
+                    <span class="placeholder col-6"></span>
+                    <span class="placeholder col-8"></span>
+                </p>
+                @endplaceholder
+                <p wire:poll.10s class="card-text">{{ $this->carsOnSale() }}</p>
+                @endisland
+            </div>
+        </div>
+        <div class="card col-md-4 offset-md-1">
+            <div class="card-body">
+                <h5 class="card-title">Cars Sold</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">Cars sold in store</h6>
+                @island(lazy: true)
+                @placeholder
+                <p class="card-text placeholder-glow">
+                    <span class="placeholder col-7"></span>
+                    <span class="placeholder col-4"></span>
+                    <span class="placeholder col-4"></span>
+                    <span class="placeholder col-6"></span>
+                    <span class="placeholder col-8"></span>
+                </p>
+                @endplaceholder
+                <p wire:poll.10s class="card-text">{{ $this->carsSold() }}</p>
+                @endisland
+            </div>
+        </div>
+        <div class="card col-md-3 offset-md-1">
+            <div class="card-body">
+                <h5 class="card-title">Cars Prices</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">Average car prices in store</h6>
+                @island(lazy: true)
+                @placeholder
+                <p class="card-text placeholder-glow">
+                    <span class="placeholder col-7"></span>
+                    <span class="placeholder col-4"></span>
+                    <span class="placeholder col-4"></span>
+                    <span class="placeholder col-6"></span>
+                    <span class="placeholder col-8"></span>
+                </p>
+                @endplaceholder
+                <p wire:poll.10s class="card-text">{{ $this->avgCarPrice() }}</p>
+                @endisland
+            </div>
+        </div>
+    </div>
+    <div id="carouselExampleRide" class="carousel carousel-dark slide" data-bs-ride="true">
+        <div class="carousel-inner" style="height: 400px;">
             <div class="carousel-item active">
                 <img src={{ asset('media/boletin_01012018_224147.jpg') }} class="d-block w-100" alt="...">
             </div>
