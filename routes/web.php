@@ -1,15 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
+use App\Http\Controllers\AuthController;
 
 // Livewire Components Routes
 Route::livewire('/', 'pages::index')->name('home');
 
-Route::get('/validate-email/{user}', function (User $user) {
-    // Logic to validate the user's email
-    $user->email_verified_at = now();
-    $user->save();
-
-    return redirect('/')->with('success', 'Email validated successfully!');
-})->name('validate.email')->middleware('signed');
+Route::get('/validate-email/{user}', [AuthController::class, 'validateEmail'])
+    ->name('validate.email')
+    ->middleware('signed');
