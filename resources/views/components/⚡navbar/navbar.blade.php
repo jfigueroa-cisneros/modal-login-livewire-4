@@ -29,12 +29,23 @@
     <livewire:register />
     <livewire:login />
     <livewire:logout />
+    <livewire:forgot-password />
+    <livewire:password-reset />
 
-    @if(session('openLoginModal'))
+    @if(session('openLoginModal') || session('openResetPasswordModal'))
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-                loginModal.show();
+                if (@json(session('openLoginModal'))) {
+                    const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                    loginModal.show();
+                    return;
+                }
+
+                if (@json(session('openResetPasswordModal'))) {
+                    const resetPasswordModal = new bootstrap.Modal(document.getElementById('resetPasswordModal'));
+                    resetPasswordModal.show();
+                    return;
+                }
             });
         </script>
     @endif
