@@ -12,8 +12,7 @@ class AuthController extends Controller
         //Check if user is logged in
         if (auth()->check()) {
             return redirect('/')
-                ->with('error', 'You are already logged in.')
-                ->with('openLoginModal', false);
+                ->with('error', 'You are already logged in.');
         }
 
         //Check if already verified
@@ -29,5 +28,19 @@ class AuthController extends Controller
         return redirect('/')
             ->with('success', 'Email validated successfully!')
             ->with('openLoginModal', true);
+    }
+
+    public function resetPassword(User $user)
+    {
+        //Check if user is logged in
+        if (auth()->check()) {
+            return redirect('/')
+                ->with('error', 'You are already logged in.');
+        }
+
+        session()->put('resetPasswordUser', $user);
+
+        return redirect('/')
+            ->with('openResetPasswordModal', true);
     }
 }
