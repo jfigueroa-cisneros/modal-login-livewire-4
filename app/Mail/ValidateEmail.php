@@ -22,7 +22,7 @@ class ValidateEmail extends Mailable implements ShouldQueue
     public function __construct(
         private User $user
     ) {
-        $this->signedUrl = URL::signedRoute('validate.email', ['user' => $this->user]);
+        $this->signedUrl = URL::temporarySignedRoute('validate.email', now()->addMinutes(30), ['user' => $this->user]);
     }
 
     /**
