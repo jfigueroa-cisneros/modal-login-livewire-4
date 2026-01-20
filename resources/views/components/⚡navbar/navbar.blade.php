@@ -29,4 +29,13 @@
     <livewire:register />
     <livewire:login />
     <livewire:logout />
+
+    @if(session('openLoginModal'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                loginModal.show();
+            });
+        </script>
+    @endif
 </div>
