@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 new class extends Component {
     public $email;
     public $password;
+    public $rememberMe = false;
 
     public function rules()
     {
@@ -19,7 +20,7 @@ new class extends Component {
     {
         $this->validate();
 
-        if (!Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
+        if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->rememberMe)) {
             $this->addError('password', 'The provided credentials do not match our records.');
             return;
         }
@@ -32,7 +33,7 @@ new class extends Component {
             return;
         }
 
-        $this->reset(['email', 'password']);
+        $this->reset(['email', 'password', 'rememberMe']);
 
         session()->regenerate();
 

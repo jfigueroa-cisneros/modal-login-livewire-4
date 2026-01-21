@@ -24,8 +24,16 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
+                    <div class="form-check">
+                        <input wire:model="rememberMe" class="form-check-input" type="checkbox" value=""
+                            id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">
+                            Remember Me
+                        </label>
+                    </div>
                 </form>
             </div>
+            {{-- TODO: remember me --}}
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-outline-success" data-bs-target="#forgotPasswordModal"
                     data-bs-toggle="modal">Forgot Password?</button>
